@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grandek.mydb.dao.CategoryDAO;
 import com.grandek.mydb.model.Category;
-@Repository(value="categoryDao")
+@Repository("categoryDao")
 public class CategoryDAOImpl extends GenericDAOImpl<Category, Integer> implements CategoryDAO {
 
 	public CategoryDAOImpl() {
