@@ -22,9 +22,16 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="PRODUCT")
 @Repository
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId")
 public class Product implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -38,7 +45,7 @@ public class Product implements Serializable {
 	private Category category;
 	
 	private Set<OrderDetails> orderDetails = new HashSet<OrderDetails>();
-	
+	@JsonView(Views.Public.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PRODUCT_ID", unique = true, nullable = false)
@@ -48,7 +55,7 @@ public class Product implements Serializable {
 	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-	
+	@JsonView(Views.Public.class)
 	@Column(name = "PRODUCT_NAME", length = 50, nullable = false)
 	public String getProductName() {
 		return productName;
@@ -56,7 +63,7 @@ public class Product implements Serializable {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	
+	@JsonView(Views.Public.class)
 	@Column(name = "PRICE", precision=18 , scale= 2, nullable = false)
 	public double getPrice() {
 		return price;
@@ -72,7 +79,8 @@ public class Product implements Serializable {
 	public void setImage(Blob image) {
 		this.image = image;
 	}
-	
+	@JsonView(Views.Public.class)
+//	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="CATEGORY_ID",referencedColumnName="CATEGORY_ID" )
 	public Category getCategory() {
@@ -82,6 +90,7 @@ public class Product implements Serializable {
 		this.category = productCategory;
 	}
 	
+	@JsonIgnore
 	@OneToMany (mappedBy = "product")
 	public Set<OrderDetails> getOrderDetails() {
 		return orderDetails;

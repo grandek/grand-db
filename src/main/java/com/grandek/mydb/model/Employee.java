@@ -19,6 +19,10 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+
 @Entity
 @Table( name = "EMPLOYEE")
 @Repository
@@ -55,6 +59,7 @@ public class Employee implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	@JsonFormat(pattern = "dd-MM-yyyy",shape=JsonFormat.Shape.STRING)
 	@Column( name = "BIRTHDAY")
 	public Date getBirthDay() {
 		return birthDay;
@@ -63,6 +68,7 @@ public class Employee implements Serializable {
 		this.birthDay = birthDay;
 	}
 	
+	@JsonIgnore
 	@OneToMany( mappedBy= "employee")
 	public Set<Orders> getOrders() {
 		return orders;

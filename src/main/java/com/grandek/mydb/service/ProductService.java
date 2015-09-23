@@ -23,5 +23,7 @@ public interface ProductService {
 	public abstract void delete(Product model);
 
 	public abstract void flush();
+	
+	public List<Product> findByCriteria(Product model);
 
 }

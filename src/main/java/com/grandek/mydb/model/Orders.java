@@ -21,6 +21,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="ORDERS")
 @Repository
@@ -65,6 +67,7 @@ public class Orders implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	@JsonIgnore
 	@OneToMany (mappedBy = "order")
 	public Set<OrderDetails> getOrderDetails() {
 		return orderDetails;

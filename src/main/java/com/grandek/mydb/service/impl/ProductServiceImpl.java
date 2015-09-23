@@ -50,4 +50,9 @@ public class ProductServiceImpl implements ProductService {
 		productDao.flush();
 	}
 
+	@Override
+	public List<Product> findByCriteria(Product model) {
+		return productDao.findByCriteria(model);
+	}
+
 }

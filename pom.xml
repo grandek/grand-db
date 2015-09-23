@@ -33,7 +33,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -89,6 +89,23 @@
 			<version>4.1.1.RELEASE</version>
 		</dependency>
 
+		<!-- Extends Jackson; supports Hibernate datatypes, so: -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${version.jackson.core}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.jackson.core}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${version.jackson.core}</version>
+		</dependency>
+
 		<!-- <dependency> -->
 		<!-- <groupId>org.mockito</groupId> -->
 		<!-- <artifactId>mockito-core</artifactId> -->
@@ -114,11 +131,11 @@
 				<artifactId>hibernate4-maven-plugin</artifactId>
 				<version>1.1.0</version>
 				<executions>
-					<execution>
-						<goals>
-							<goal>export</goal>
-						</goals>
-					</execution>
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>export</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
 				</executions>
 				<configuration>
 					<hibernateDialect>org.hibernate.dialect.MySQLDialect</hibernateDialect>

@@ -40,5 +40,16 @@ public class HibernateTest {
 	            configuration.getProperties()). buildServiceRegistry();
 	    return configuration.buildSessionFactory(serviceRegistry);
 	}
+	
+	@Test
+	public void testListCategoryMustEqual() {
+		Session session = sessionFactory.openSession();
+//		session.beginTransaction();
+		Query query = session.createQuery("from Category");
+		List<Category> cates = query.list();
+//		session.getTransaction().commit();
+		session.close();
+		assertEquals(2, cates.size());
+	}
 
 }

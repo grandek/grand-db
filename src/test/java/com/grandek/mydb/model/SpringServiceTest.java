@@ -5,7 +5,11 @@
  */
 package com.grandek.mydb.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +31,12 @@ public class SpringServiceTest {
 	@Test
 	public void testFindAllNotNull() {
 		assertNotNull(categoryService.findAll());
+	}
+	
+	@Test
+	public void testFindAllCategoryMustEqual() {
+		List<Category> categories = categoryService.findAll();
+		assertEquals(2, categories.size());
 	}
 	
 	@Test

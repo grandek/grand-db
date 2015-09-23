@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="CUSTOMER")
 @Repository
@@ -48,7 +50,7 @@ public class Customer implements Serializable {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-
+	@JsonIgnore
 	@OneToMany( mappedBy= "customer")
 	public Set<Orders> getOrders() {
 		return orders;

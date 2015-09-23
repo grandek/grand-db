@@ -7,6 +7,7 @@ package com.grandek.mydb.model;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.junit.Test;
@@ -30,6 +31,12 @@ public class SpringDAOTest {
 	@Test
 	public void testFindAllNotNull() {
 		assertNotNull(categoryDao.findAll());
+	}
+	
+	@Test
+	public void testFindAllCategoryMustEqual() {
+		List<Category> categories = categoryDao.findAll();
+		assertEquals(2, categories.size());
 	}
 	
 	@Test
